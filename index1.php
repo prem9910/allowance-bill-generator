@@ -17,59 +17,42 @@ include('config.php');
 
 <body>
   <div class="container">
+    <h1 class="text-center">PDF Generate in Php</h1>
 
-  
-  
-  <h1 class="text-center">PDF Generate in Php</h1>
-
-  <div class="card">
-    <div class="card-body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Employee Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Address</th>
-            <th scope="col">Options</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $query = mysqli_query($con,"SELECT * FROM users "); 
-          $i=1;
-          while($row = mysqli_fetch_assoc($query))
-          {
-          ?>
-          <tr>
-            <th scope="row"><?=$i++?>.</th>
-            <td><?=$row['username']?></td>
-            <td><?=$row['email']?></td>
-            <td><?=$row['mobile']?></td>
-            <td><?=$row['address']?></td>
-            <td>
-              <a target="_blank" href="print-details.php?id=<?=$row['id']?>" class="btn btn-sm btn-primary"> <i class="fa fa-file-pdf-o"></i> Print  Details</a>
-            </td>
-          </tr>
-         <?php } ?>
-        </tbody>
-      </table>
-    </div>
+    <div class="card">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Employee Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Address</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $query = mysqli_query($con,"SELECT * FROM users "); 
+            $i=1;
+            while($row = mysqli_fetch_assoc($query))
+            {
+            ?>
+            <tr>
+              <th scope="row"><?=$i++?>.</th>
+              <td><?=$row['username']?></td>
+              <td><?=$row['email']?></td>
+              <td><?=$row['mobile']?></td>
+              <td><?=$row['address']?></td>
+              <td>
+                <a target="_blank" href="print-details.php?id=<?=$row['id']?>" class="btn btn-sm btn-primary"> <i class="fa fa-file-pdf-o"></i> Print  Details</a>
+              </td>
+            </tr>
+          <?php } ?>
+          </tbody>
+        </table>
+      </div>
   </div>
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
