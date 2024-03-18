@@ -4,8 +4,15 @@ require 'dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 
 $id = $_GET['id'];
-$sql = mysqli_query($con,"SELECT * FROM users WHERE id='$id'");
-$user = mysqli_fetch_assoc($sql);
+$sql_users = mysqli_query($con,"SELECT * FROM users WHERE id='$id'");
+$user = mysqli_fetch_assoc($sql_users);
+
+$sql_travel = mysqli_query($con,"SELECT * FROM travel_information WHERE id='$id'");
+$travel = mysqli_fetch_assoc($sql_travel);
+
+$sql_hotel = mysqli_query($con,"SELECT * FROM hoteldetails WHERE id='$id'");
+$hotel = mysqli_fetch_assoc($sql_hotel);
+
 
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();

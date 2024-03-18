@@ -1,0 +1,35 @@
+p {
+    font-size: 18px;
+}
+
+.user-details>table,tr,td,th {
+    width: 100%;
+    border-collapse: collapse;
+    /* border: none`; */
+}
+
+.user-details>td {
+    font-weight: 500;
+    /* border: none; */
+    padding: 10px;
+}
+
+.travel-details>table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.travel-details>tr,th,td {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid black;
+
+}
+
+.hotel-details>table,tr,th,td {
+    margin-top: 30px;
+    width: 100%;
+    border: 1px solid;
+    border-collapse: collapse;
+}
