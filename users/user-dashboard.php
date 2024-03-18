@@ -69,79 +69,8 @@ $user = mysqli_fetch_assoc($query);
 
 
 
+
                     <!-- <div class="card-body">
-
-                        <form action="submit_travel_information.php" method="post">
-                            <div class="main-form mt-3 border-bottom">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group mb-2">
-                                            <label for="departure_date">Departure Date</label>
-                                            <input type="date" id="departure_date" name="departure_date" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group mb-2">
-                                            <label for="origin_location">Origin Location</label>
-                                            <input type="text" id="origin_location" name="origin_location" class="form-control" required placeholder="Enter Origin Location">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group mb-2">
-                                            <label for="arrival_date">Arrival Date</label>
-                                            <input type="date" id="arrival_date" name="arrival_date" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group mb-2">
-                                            <label for="destination_location">Destination Location</label>
-                                            <input type="text" id="destination_location" name="destination_location" class="form-control" required placeholder="Enter Destination Location">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    
-                                    <div class="col-md-3">
-                                        <div class="form-group mb-2">
-                                            <label for="mode_of_transportation">Mode of Transportation</label>
-                                            <input type="text" id="mode_of_transportation" name="mode_of_transportation" class="form-control" required placeholder="Enter Mode of Transportation">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group mb-2">
-                                            <label for="accommodation_class">Accommodation Class</label>
-                                            <input type="text" id="accommodation_class" name="accommodation_class" class="form-control" required placeholder="Enter Accommodation Class">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group mb-2">
-                                            <label for="fare_amount">Fare Amount</label>
-                                            <input type="text" id="fare_amount" name="fare_amount" class="form-control" required placeholder="Enter Fare Amount">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="distance_kilometers">Distance in Kilometers</label>
-                                            <input type="text" id="distance_kilometers" name="distance_kilometers" class="form-control" required placeholder="Enter Distance in Kilometers">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="travel_duration">Travel Duration</label>
-                                            <input type="text" id="travel_duration" name="travel_duration" class="form-control" required placeholder="Enter Travel Duration">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                        </form>
-
-
-                    </div> -->
-                    <div class="card-body">
 
                         <form action="submit_travel_information.php" method="post">
                             <table class="table">
@@ -197,7 +126,9 @@ $user = mysqli_fetch_assoc($query);
                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
                         </form>
 
-                    </div>
+                    </div> -->
+
+
 
                 </div>
 
@@ -209,7 +140,7 @@ $user = mysqli_fetch_assoc($query);
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="submit_travel_information.php" method="post">
+                                <form action="travel-info.php" method="post">
                                     <div class="main-form mt-3 border-bottom">
                                         <div class="row">
                                             <div class="col-md-5">
@@ -240,20 +171,6 @@ $user = mysqli_fetch_assoc($query);
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group mb-2">
-                                                    <label for="mode_of_transportation">Mode of Transportation</label>
-                                                    <input type="text" id="mode_of_transportation" name="mode_of_transportation" class="form-control" required placeholder="Enter Mode of Transportation">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mb-2">
-                                                    <label for="accommodation_class">Accommodation Class</label>
-                                                    <input type="text" id="accommodation_class" name="accommodation_class" class="form-control" required placeholder="Enter Accommodation Class">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label for="fare_amount">Fare Amount</label>
@@ -273,6 +190,41 @@ $user = mysqli_fetch_assoc($query);
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group mb-2">
+                                                    <label for="mode_of_transportation">Mode of Transportation</label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="mode_of_transportation" id="by_air" value="Air" required>
+                                                        <label class="form-check-label" for="by_air">
+                                                            Air
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="mode_of_transportation" id="by_rail" value="Rail" required>
+                                                        <label class="form-check-label" for="by_rail">
+                                                            Rail
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="mode_of_transportation" id="by_road" value="Road" required>
+                                                        <label class="form-check-label" for="by_road">
+                                                            Road
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6" id="accommodation_class_options" style="display: none;">
+                                                <div class="form-group mb-2">
+                                                    <label for="accommodation_class">Accommodation Class</label>
+                                                    <select class="form-select" id="accommodation_class" name="accommodation_class" required>
+                                                        <!-- Options will be dynamically added based on the selected mode of transportation -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
@@ -290,10 +242,37 @@ $user = mysqli_fetch_assoc($query);
     <!-- Bootstrap JavaScript and jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const modeOfTransportationRadios = document.querySelectorAll('input[name="mode_of_transportation"]');
+        const accommodationClassOptions = document.getElementById('accommodation_class_options');
+        const accommodationClassSelect = document.getElementById('accommodation_class');
+
+        modeOfTransportationRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    accommodationClassOptions.style.display = 'block';
+                    if (this.value === 'Air') {
+                        populateAccommodationClassOptions(['Economy Class', 'Business Class', 'First Class']);
+                    } else if (this.value === 'Rail') {
+                        populateAccommodationClassOptions(['Sleeper Class', 'AC 3 Tier', 'AC 2 Tier']);
+                    } else if (this.value === 'Road') {
+                        populateAccommodationClassOptions(['Standard', 'Deluxe', 'Luxury']);
+                    }
+                }
+            });
+        });
+
+        function populateAccommodationClassOptions(options) {
+            accommodationClassSelect.innerHTML = ''; // Clear previous options
+            options.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.textContent = option;
+                optionElement.value = option;
+                accommodationClassSelect.appendChild(optionElement);
+            });
+        }
+    </script>
 </body>
-
 <script src="./includes/script.js"></script>
-
-
 
 </html>
