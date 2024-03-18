@@ -106,7 +106,7 @@
         <p style="margin: 20px 0; ">NOTE: This bill should be prepared in duplicate, one for payment and the other as
             office copy</p>
 
-        <p style="text-align: center; margin:40px 0;"><b>PART-A</b></p>
+        <p style="text-align: center; margin:40px 0;"><b>PART-A(To be filled up by Government Servant)</b></p>
         <div class="user-details">
             <table>
                 <tr>
