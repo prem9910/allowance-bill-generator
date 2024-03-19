@@ -25,7 +25,7 @@
         /* text-align: center; */
     }
 
-    .user-details span{
+    .user-details span {
         font-weight: 500;
     }
 
@@ -90,7 +90,7 @@
         /* Adjust width as needed */
     }
 
-    .details .title{
+    .details .title {
         font-weight: 500;
     }
 </style>
@@ -125,25 +125,59 @@
     </div>
     <div class="travel-details">
         <table>
-            <tr>
-                <th colspan="2">Departure</th>
-                <th colspan="2">Arrival</th>
-                <th colspan="2" style="width:30%;">Mode of travel</th>
-                <th>Fare paid</th>
-                <th rowspan="2">Distance in Kms for road mileage</th>
-                <th>Duration of halt</th>
-            </tr>
-            <tr>
-                <th>Date & Time</th>
-                <th>From</th>
-                <th>Date & Time</th>
-                <th>To</th>
-                <th>Mode of travel</th>
-                <th>class of accommodation</th>
-                <th>Rs.</th>
-                <th>Days/Hours</th>
-            </tr>
-            <tr>
+            <thead>
+                <tr>
+                    <th colspan="2">Departure</th>
+                    <th colspan="2">Arrival</th>
+                    <th colspan="2" style="width:30%;">Mode of travel</th>
+                    <th>Fare paid</th>
+                    <th rowspan="2">Distance in Kms for road mileage</th>
+                    <th>Duration of halt</th>
+                </tr>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>From</th>
+                    <th>Date & Time</th>
+                    <th>To</th>
+                    <th>Mode of travel</th>
+                    <th>class of accommodation</th>
+                    <th>Rs.</th>
+                    <th>Days/Hours</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <!-- PHP code to fetch data from the MySQL table and loop through each row -->
+                <?php
+                // SQL query to retrieve data from the table
+                $sql = "SELECT * FROM `travel_information` where emp_id = '$id'";
+
+                $result = $con->query($sql);
+
+                // Check if there are any rows in the result
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($travel = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $travel['departure_date'] . "</td>";
+                        echo "<td>" . $travel["origin_location"] . "</td>";
+                        echo "<td>" . $travel["arrival_date"] . "</td>";
+                        echo "<td>" . $travel["destination_location"] . "</td>";
+                        echo "<td>" . $travel["mode_of_transportation"] . "</td>";
+                        echo "<td>" . $travel["accommodation_class"] . "</td>";
+                        echo "<td>" . $travel["fare_amount"] . "</td>";
+                        echo "<td>" . $travel["distance_kilometers"] . "</td>";
+                        echo "<td>" . $travel["travel_duration"] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='11'>No data found</td></tr>";
+                }
+
+                ?>
+            </tbody>
+
+            <!-- <tr>
                 <td><?= $travel['departure_date'] ?></td>
                 <td><?= $travel['origin_location'] ?></td>
                 <td><?= $travel['arrival_date'] ?></td>
@@ -153,7 +187,7 @@
                 <td><?= $travel['fare_amount'] ?></td>
                 <td><?= $travel['distance_kilometers'] ?></td>
                 <td><?= $travel['travel_duration'] ?></td>
-            </tr>
+            </tr> -->
 
         </table>
     </div>
@@ -207,24 +241,53 @@
 
     <div class="hotel-details">
         <table>
-            <tr>
-                <th colspan="2" style="">Period of Stay</th>
-                <th rowspan="2">Name of Hotel</th>
-                <th rowspan="2">Daily rate of lodging charged Rs.</th>
-                <th rowspan="2">Total amount paid Rs.</th>
-            </tr>
-            <tr>
-                <th>From</th>
-                <th>To</th>
+            <thead>
+                <tr>
+                    <th colspan="2" style="">Period of Stay</th>
+                    <th rowspan="2">Name of Hotel</th>
+                    <th rowspan="2">Daily rate of lodging charged Rs.</th>
+                    <th rowspan="2">Total amount paid Rs.</th>
+                </tr>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
 
-            </tr>
-            <tr>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- PHP code to fetch data from the MySQL table and loop through each row -->
+                <?php
+                // SQL query to retrieve data from the table
+                $sql = "SELECT * FROM `hoteldetails` where emp_id = '$id'";
+
+                $result = $con->query($sql);
+
+                // Check if there are any rows in the result
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($hotel = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $hotel['period_from'] . "</td>";
+                        echo "<td>" . $hotel['period_to'] . "</td>";
+                        echo "<td>" . $hotel['hotel_name'] . "</td>";
+                        echo "<td>" . $hotel['daily_rate'] . "</td>";
+                        echo "<td>" . $hotel['total_amount_paid'] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='11'>No data found</td></tr>";
+                }
+
+                ?>
+            </tbody>
+
+            <!-- <tr>
                 <td><?= $hotel['period_from'] ?></td>
                 <td><?= $hotel['period_to'] ?></td>
                 <td><?= $hotel['hotel_name'] ?></td>
                 <td><?= $hotel['daily_rate'] ?></td>
                 <td><?= $hotel['total_amount_paid'] ?></td>
-            </tr>
+            </tr> -->
 
         </table>
     </div>

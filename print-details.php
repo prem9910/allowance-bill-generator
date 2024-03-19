@@ -3,14 +3,14 @@ include('config.php');
 require 'dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 
-$id = $_GET['id'];
-$sql_users = mysqli_query($con,"SELECT * FROM users WHERE id='$id'");
+$id = $_GET['emp_id'];
+$sql_users = mysqli_query($con,"SELECT * FROM users WHERE emp_id='$id'");
 $user = mysqli_fetch_assoc($sql_users);
 
-$sql_travel = mysqli_query($con,"SELECT * FROM travel_information WHERE id='$id'");
+$sql_travel = mysqli_query($con,"SELECT * FROM travel_information WHERE emp_id='$id'");
 $travel = mysqli_fetch_assoc($sql_travel);
 
-$sql_hotel = mysqli_query($con,"SELECT * FROM hoteldetails WHERE id='$id'");
+$sql_hotel = mysqli_query($con,"SELECT * FROM hoteldetails WHERE emp_id='$id'");
 $hotel = mysqli_fetch_assoc($sql_hotel);
 
 
