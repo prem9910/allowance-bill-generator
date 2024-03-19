@@ -1,12 +1,12 @@
 <?php
-
+session_start();
 include('../config.php');
 
 // Get the user ID from the URL
-$id = $_GET['id'];
+$id = $_GET['emp_id'];
 
 // Fetch the user's data from the database
-$query = mysqli_query($con, "SELECT * FROM users WHERE id = '$id'") or die(mysqli_error($con));
+$query = mysqli_query($con, "SELECT * FROM users WHERE emp_id = '$id'") or die(mysqli_error($con));
 $user = mysqli_fetch_assoc($query);
 ?>
 
@@ -70,7 +70,7 @@ $user = mysqli_fetch_assoc($query);
 
 
 
-                    <!-- <div class="card-body">
+                    <div class="card-body">
 
                         <form action="submit_travel_information.php" method="post">
                             <table class="table">
@@ -126,7 +126,7 @@ $user = mysqli_fetch_assoc($query);
                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
                         </form>
 
-                    </div> -->
+                    </div>
 
 
 

@@ -45,8 +45,8 @@ include('config.php');
               <td><?=$row['mobile']?></td>
               <td><?=$row['address']?></td>
               <td>
-                <a target="" href="./users/user-dashboard.php?id=<?=$row['id']?>" class="btn btn-sm btn-primary"><i class="fa fa-user"></i> Dashboard</a>
-                <!-- <a target="_blank" href="print-details.php?id=<?=$row['id']?>" class="btn btn-sm btn-primary"> <i class="fa fa-file-pdf-o"></i> Print  Details</a> -->
+                <a target="" href="./users/user-dashboard.php?emp_id=<?=$row['emp_id']?>" class="btn btn-sm btn-primary"><i class="fa fa-user"></i> Dashboard</a>
+                <!-- <a target="_blank" href="print-details.php?emp_id=<?=$row['emp_id']?>" class="btn btn-sm btn-primary"> <i class="fa fa-file-pdf-o"></i> Print  Details</a> -->
               </td>
             </tr>
           <?php } ?>
