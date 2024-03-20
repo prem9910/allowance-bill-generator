@@ -97,11 +97,6 @@ $user = mysqli_fetch_assoc($query);
                             <tbody>
                                 <!-- PHP code to fetch data from the MySQL table and loop through each row -->
                                 <?php
-
-
-
-
-
                                 // SQL query to retrieve data from the table
                                 $sql = "SELECT * FROM `travel_information` where emp_id = '$id'";
 
