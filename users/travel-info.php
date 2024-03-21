@@ -5,7 +5,7 @@ session_start();
 // Check if the user is logged in and emp_id is set in the session
 if (!isset($_SESSION['email'])) {
     // Redirect to the login page or show an error message
-    header("Location: login.php");
+    header("Location: ../index.php");
     exit();
 }
 

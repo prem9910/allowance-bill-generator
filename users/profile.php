@@ -53,21 +53,91 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
 </head>
+
 <body>
-    <h2>Update Profile</h2>
-    <form method="post" action="">
-        Email: <input type="email" name="email" value="<?php echo $email; ?>" required><br>
-        Phone: <input type="text" name="phone" value="<?php echo $phone; ?>" required><br>
-        Address: <input type="text" name="address" value="<?php echo $address; ?>" required><br>
-        Designation: <input type="text" name="designation" value="<?php echo $designation; ?>" required><br>
-        Pay: <input type="text" name="pay" value="<?php echo $pay; ?>" required><br>
-        Headquarters: <input type="text" name="headquarters" value="<?php echo $headquarters; ?>" required><br>
-        <input type="submit" value="Update">
-    </form>
+    <div class="modal fade" id="hotelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Profile Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="update_profile.php" method="post">
+                        <div class="main-form mt-3 border-bottom">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="username">Username</label>
+                                        <input type="text" id="username" name="username" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="text" id="phone" name="phone" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="address">Address</label>
+                                        <input type="text" id="address" name="address" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="designation">Designation</label>
+                                        <input type="text" id="designation" name="designation" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="pay">Pay</label>
+                                        <input type="text" id="pay" name="pay" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="headquarters">Headquarters</label>
+                                        <input type="text" id="headquarters" name="headquarters" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary mt-3">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
