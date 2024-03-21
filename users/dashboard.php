@@ -1,29 +1,38 @@
 <?php
 session_start();
-// echo $_SESSION['emp_id'];
-if (!isset($_SESSION['emp_id'])) {
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$email = $_SESSION['email'];
+
+// Retrieve user details from the database using the username
+include('../config.php');
+
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $emp_id = $row['emp_id']; // Assuming you have an 'id' column in your users table
+    $username = $row['username'];
+    // Fetch other user details as needed
+} else {
+    // User not found, handle accordingly
     header("Location: ../index.php");
     exit;
 }
 
-$emp_id = $_SESSION['emp_id'];
+// Logout script
+if(isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
 
-// Retrieve user details from the database using the emp_id
-include('../config.php');
-
-$sql = "SELECT * FROM users WHERE emp_id='$emp_id'";
-$result = $con->query($sql);
-    $row = $result->fetch_assoc();
-
-// if ($result->num_rows > 0) {
-//     // $userId = $row['id']; // Assuming you have an 'id' column in your users table
-//     $username = $row['username'];
-//     // Fetch other user details as needed
-// } else {
-//     // User not found, handle accordingly
-//     header("Location: login.php");
-//     exit;
-// }
 ?>
 
 <!DOCTYPE html>
@@ -58,8 +67,8 @@ $result = $con->query($sql);
         <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
             <ul><!--MENU-->
                 <li><a href="#"><?php echo $row['username'] ?></li></a>
-                <li><a href="#">Account</li></a>
-                <li><a href="#">Log Out</li></a>
+                <li><a href="profile.php">Account</li></a>
+                <li><a href="../logout.php">Log Out</li></a>
             </ul>
         </div>
 
@@ -81,7 +90,7 @@ $result = $con->query($sql);
                 ?>
                 <div class="row">
                     <div class="col-md-12 m-2">
-                        <a target="_blank" href="../print-details.php?emp_id=<?= $user['emp_id'] ?>" class="add-more-form float-end btn btn-primary"> <i class="fa fa-file-pdf-o"></i> Print Details</a>
+                        <a target="_blank" href="../print-details.php?email=<?= $row['email'] ?>" class="add-more-form float-end btn btn-primary"> <i class="fa fa-file-pdf-o"></i> Print Details</a>
 
                     </div>
                 </div>
@@ -114,7 +123,7 @@ $result = $con->query($sql);
                                 <!-- PHP code to fetch data from the MySQL table and loop through each row -->
                                 <?php
                                 // SQL query to retrieve data from the table
-                                $sql = "SELECT * FROM `travel_information` where emp_id = '$emp_id'";
+                                $sql = "SELECT * FROM `travel_information` where email = '$email'";
 
                                 $result = $con->query($sql);
 
@@ -341,7 +350,7 @@ $result = $con->query($sql);
                                 <!-- PHP code to fetch data from the MySQL table and loop through each row -->
                                 <?php
                                 // SQL query to retrieve data from the table
-                                $sql = "SELECT * FROM `hoteldetails` where emp_id = '$emp_id'";
+                                $sql = "SELECT * FROM `hoteldetails` where email = '$email'";
 
                                 $result = $con->query($sql);
 
@@ -408,3 +417,4 @@ $result = $con->query($sql);
 <script src="./includes/script.js"></script>
 
 </html>
+

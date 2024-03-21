@@ -1,115 +1,65 @@
 <?php
+session_start();
+include('config.php');
 
-    include "./config.php";
-
-    $op = $_POST['op'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if ($op=="login")
-    {
-        $sql = "SELECT id,name FROM users WHERE email='$email' AND PASSWORD('$password') = password";
-        $result = mysqli_query($con,$sql);
+    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+    $result = $con->query($sql);
 
-        // FAILED LOGIN
-        if (mysqli_num_rows($result)==0)
-        {
-             //echo "Nothing found here";
-             $failed=1;
-        }
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-        // SUCCESS LOGIN
-        else
-        {
-            //echo "Found! Login OK!";
-            $row = $result->fetch_row();
+        // Access other details of the user
+        $username = $user['username']; // Replace 'username' with the actual column name in your table
+        $email = $user['email']; // Replace 'email' with the actual column name in your table
+        // Access other columns as needed
 
-            $emp_id = $row[0];
-            $db_name = $row[1];
+        // Set session variables
+        $_SESSION['email'] = $email;
+        $_SESSION['username'] = $username;
+        // Set other session variables as needed
 
-            //echo "<br><br>ID: $db_id  Name: $db_name";
-
-            setcookie("auth_id","$emp_id");
-            setcookie("auth_email","$email");
-
-            //echo "Success! Cookie value: " . $_COOKIE['auth_id'];
-            header("Location:private.php");
-
-            exit;
-        }
-
-
-
+        // Redirect to the user dashboard
+        // echo $_SESSION['email'];
+        header("Location: users/dashboard.php");
+        exit;
+    } else {
+        echo "Login failed";
     }
+}
 
 ?>
 
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-            <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 
 <body>
+    <h2>Login</h2>
+    <form method="post" action="">
+        Email: <input type="text" name="email" required><br>
+        Password: <input type="password" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
 
-
-
-<div class="container p-3 col-md-4">
-
-    <?php
-    if ($failed==1)
-    {
-    ?>
-              <div class="panel panel-danger">
-                <div class="panel-heading">Login error</div>
-                <div class="panel-body">Wrong login or password</div>
-              </div>
-
-    <?php
-    }
-    ?>
-
-    <div class="panel panel-default">
-    <div class="panel-heading">Login page</div>
-    <div class="panel-body">
-
-
-        <form method=POST action=login.php>
-
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="text" class="form-control" autocomplete=off required name="email"/>
-            </div>
-
-            <div class="form-group">
-                <label>Password:</label>
-                <input type="password" class="form-control"  required name="password"/>
-            </div>
-
-
-            <div class="form-group">
-                <label></label>
-                <input type="submit" class="btn btn-primary" value="Login"/>
-            </div>
-
-            <input type="hidden" name="op" value="login" />
-
-        </form>
-    </div>
-    </div>
-</div>
+    
 
 </body>
 

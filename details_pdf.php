@@ -93,6 +93,38 @@
     .details .title {
         font-weight: 500;
     }
+
+
+    .page_break {
+        page-break-before: always;
+    }
+
+    .certificate {
+        max-width: 85%;
+        margin: 50px auto;
+        padding: 20px;
+        /* border: 1px solid #ccc; */
+        /* border-radius: 10px; */
+    }
+
+
+
+    .header {
+        text-align: center;
+    }
+
+    .content {
+        font-size: 19px;
+        line-height: 1.5;
+        margin-top: 20px;
+    }
+
+    .blank {
+        border-bottom: 1px solid #000;
+        padding-bottom: 2px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
 </style>
 
 <body style="margin: 0; width:100%;">
@@ -150,7 +182,7 @@
                 <!-- PHP code to fetch data from the MySQL table and loop through each row -->
                 <?php
                 // SQL query to retrieve data from the table
-                $sql = "SELECT * FROM `travel_information` where emp_id = '$id'";
+                $sql = "SELECT * FROM `travel_information` where email = '$email'";
 
                 $result = $con->query($sql);
 
@@ -258,7 +290,7 @@
                 <!-- PHP code to fetch data from the MySQL table and loop through each row -->
                 <?php
                 // SQL query to retrieve data from the table
-                $sql = "SELECT * FROM `hoteldetails` where emp_id = '$id'";
+                $sql = "SELECT * FROM `hoteldetails` where email = '$email'";
 
                 $result = $con->query($sql);
 
@@ -290,6 +322,21 @@
             </tr> -->
 
         </table>
+    </div>
+    <div class="page_break">
+        <div class="certificate">
+            <div class="header">
+                <h1>CERTIFICATE</h1>
+            </div>
+            <div class="content">
+                <p>This is to certify that I have incurred an expenditure of Rs. 1000/- towards breakfast, lunch and dinner during my stay in <span class="blank">-------------------------</span> from <span class="blank">------------</span> to <span class="blank">----------------</span>.</p>
+                <br><p>Name: <span class="blank"></span></p>
+                <br><p>Signature: <span class="blank"></span></p>
+                <br><br><p>Certified that I have spent an amount of Rs. <span class="blank">---------</span> /- [Rupees <span class="blank">--------------------</span> Only] per day towards Local Conveyance during the visit to <span class="blank">--------------------</span> from <span class="blank">-------------</span> to <span class="blank">-----------------------------</span>.</p>
+                <br><p>Name: <span class="blank"></span></p>
+                <br><p>Signature: <span class="blank"></span></p>
+            </div>
+        </div>
     </div>
 
 </body>

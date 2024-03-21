@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is logged in and emp_id is set in the session
-if (!isset($_SESSION['emp_id'])) {
+if (!isset($_SESSION['email'])) {
     // Redirect to the login page or show an error message
     header("Location: login.php");
     exit();
@@ -26,22 +26,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $accommodation_class = mysqli_real_escape_string($con, $_POST['accommodation_class']);
 
     // Get the emp_id from the session
-    $emp_id = $_SESSION['emp_id'];
+    $email = $_SESSION['email'];
+
+    
 
     // Attempt to insert data into the database
-    $sql = "INSERT INTO travel_information (departure_date, origin_location, arrival_date, destination_location, fare_amount, distance_kilometers, travel_duration, mode_of_transportation, accommodation_class, emp_id) 
-            VALUES ('$departure_date', '$origin_location', '$arrival_date', '$destination_location', '$fare_amount', '$distance_kilometers', '$travel_duration', '$mode_of_transportation', '$accommodation_class', '$emp_id')";
+    $sql = "INSERT INTO travel_information (departure_date, origin_location, arrival_date, destination_location, fare_amount, distance_kilometers, travel_duration, mode_of_transportation, accommodation_class, email) 
+            VALUES ('$departure_date', '$origin_location', '$arrival_date', '$destination_location', '$fare_amount', '$distance_kilometers', '$travel_duration', '$mode_of_transportation', '$accommodation_class', '$email')";
     
     if(mysqli_query($con, $sql)){
         // Redirect to the user dashboard or show a success message
-        header("Location: user_dashboard.php");
+        header("Location: dashboard.php");
         exit();
     } else{
         // Display an error message if the insertion fails
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
     }
      
     // Close connection
-    mysqli_close($conn);
+    mysqli_close($con);
 }
 ?>
