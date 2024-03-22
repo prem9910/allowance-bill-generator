@@ -329,12 +329,32 @@
                 <h1>CERTIFICATE</h1>
             </div>
             <div class="content">
-                <p>This is to certify that I have incurred an expenditure of Rs. 1000/- towards breakfast, lunch and dinner during my stay in <span class="blank">-------------------------</span> from <span class="blank">------------</span> to <span class="blank">----------------</span>.</p>
-                <br><p>Name: <span class="blank"></span></p>
-                <br><p>Signature: <span class="blank"></span></p>
-                <br><br><p>Certified that I have spent an amount of Rs. <span class="blank">---------</span> /- [Rupees <span class="blank">--------------------</span> Only] per day towards Local Conveyance during the visit to <span class="blank">--------------------</span> from <span class="blank">-------------</span> to <span class="blank">-----------------------------</span>.</p>
-                <br><p>Name: <span class="blank"></span></p>
-                <br><p>Signature: <span class="blank"></span></p>
+                <?php
+                // SQL query to retrieve data from the table
+                $sql = "SELECT * FROM `food` WHERE `email` = '$email'";
+                // $sql1 = "SELECT * FROM `local` WHERE `email` = '$email'";
+                $user_sql = "SELECT * FROM `users` WHERE `email` = '$email'";
+
+                // Execute the query
+                $result = mysqli_query($con, $sql);
+                // $result1 = mysqli_query($con, $sql1);
+                $result2 = mysqli_query($con, $user_sql);
+                $food = mysqli_fetch_assoc($result);
+                // $local = mysqli_fetch_assoc($result1);
+                $user = mysqli_fetch_assoc($result2);
+
+                ?>
+                <p>This is to certify that I have incurred an expenditure of Rs. <?= $food['amount'] ?>/- towards breakfast, lunch and dinner during my stay in <span class=""><?= $food['restaurant'] ?></span> from <span class="blank"><?= $food['period_from'] ?></span> to <span class="blank"><?= $food['period_to'] ?></span>.</p>
+                <br>
+                <p>Name: <span class="blank"><?= $user['username'] ?></span></p>
+                <br>
+                <p>Signature: <span class="blank"></span></p>
+                <br><br>
+                <!-- <p>Certified that I have spent an amount of Rs. <span class="blank"><?=$food['amount']?></span> /- [Rupees <span class="blank"></span> Only] per day towards Local Conveyance during the visit to <span class="blank">--------------------</span> from <span class="blank">-------------</span> to <span class="blank">-----------------------------</span>.</p>
+                <br>
+                <p>Name: <span class="blank"><?= $user['username'] ?></span></p>
+                <br>
+                <p>Signature: <span class="blank"></span></p> -->
             </div>
         </div>
     </div>

@@ -271,7 +271,7 @@ if (isset($_POST['logout'])) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="insert_hotel_details.php" method="post">
+                                <form action="hotel.php" method="post">
                                     <div class="main-form mt-2 mb-3 ">
                                         <div class="row">
                                             <div class="col-md-6">
