@@ -43,7 +43,7 @@ if (isset($_POST['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="./includes/styles.css">
 </head>
 <style>
@@ -168,7 +168,7 @@ if (isset($_POST['logout'])) {
                                             <div class="col-md-5">
                                                 <div class="form-group mb-2">
                                                     <label for="departure_date">Departure Date</label>
-                                                    <input type="date" id="departure_date" name="departure_date" class="form-control" required>
+                                                    <input type="date" id="departure_date" name="departure_date" class="form-control" placeholder="Select Date & Time" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
@@ -182,7 +182,7 @@ if (isset($_POST['logout'])) {
                                             <div class="col-md-5">
                                                 <div class="form-group mb-2">
                                                     <label for="arrival_date">Arrival Date</label>
-                                                    <input type="date" id="arrival_date" name="arrival_date" class="form-control" required>
+                                                    <input type="date" id="arrival_date" name="arrival_date" class="form-control" placeholder="Select Date & Time" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
@@ -510,6 +510,21 @@ if (isset($_POST['logout'])) {
             });
         }
     </script>
+    <!-- Flatpicker -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        config = {
+            enableTime:true,
+            dateformat: "d-m-Y H:i",
+            altInput:true,
+            altFormat:"F j, Y (h:S K)"
+        }
+        // Otherwise, selectors are also supported
+        flatpickr("input[type=date]", config);
+    </script>
+
+
+
 </body>
 <script src="./includes/script.js"></script>
 

@@ -209,18 +209,6 @@
                 ?>
             </tbody>
 
-            <!-- <tr>
-                <td><?= $travel['departure_date'] ?></td>
-                <td><?= $travel['origin_location'] ?></td>
-                <td><?= $travel['arrival_date'] ?></td>
-                <td><?= $travel['destination_location'] ?></td>
-                <td><?= $travel['mode_of_transportation'] ?></td>
-                <td><?= $travel['accommodation_class'] ?></td>
-                <td><?= $travel['fare_amount'] ?></td>
-                <td><?= $travel['distance_kilometers'] ?></td>
-                <td><?= $travel['travel_duration'] ?></td>
-            </tr> -->
-
         </table>
     </div>
     <div class="details">
@@ -313,13 +301,7 @@
                 ?>
             </tbody>
 
-            <!-- <tr>
-                <td><?= $hotel['period_from'] ?></td>
-                <td><?= $hotel['period_to'] ?></td>
-                <td><?= $hotel['hotel_name'] ?></td>
-                <td><?= $hotel['daily_rate'] ?></td>
-                <td><?= $hotel['total_amount_paid'] ?></td>
-            </tr> -->
+          
 
         </table>
     </div>
