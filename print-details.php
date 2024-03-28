@@ -1,5 +1,5 @@
 <?php 
-include('config.php');
+include('security.php');
 require 'dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 

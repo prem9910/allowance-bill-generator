@@ -87,7 +87,6 @@
 
     .hotel-details th[rowspan="2"] {
         width: 20%;
-        /* Adjust width as needed */
     }
 
     .details .title {

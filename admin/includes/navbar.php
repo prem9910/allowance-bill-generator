@@ -38,7 +38,7 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Travel Details:</h6>
       <a class="collapse-item" href="buttons.html">Add</a>
-      <a class="collapse-item" href="cards.html">Manage</a>
+      <a class="collapse-item" href="travel_details.php">Manage</a>
     </div>
   </div>
 </li>
@@ -52,7 +52,7 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Hotel Details:</h6>
       <a class="collapse-item" href="buttons.html">Add</a>
-      <a class="collapse-item" href="cards.html">Manage</a>
+      <a class="collapse-item" href="hotel_details.php">Manage</a>
     </div>
   </div>
 </li>

@@ -4,6 +4,24 @@ include('includes/header.php');
 include('includes/navbar.php'); 
 
 
+$email = $_SESSION['username'];
+
+// Retrieve user details from the database using the username
+include('../config.php');
+
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $emp_id = $row['emp_id']; // Assuming you have an 'id' column in your users table
+    $username = $row['username'];
+    // Fetch other user details as needed
+} else {
+    // User not found, handle accordingly
+    header("Location: ../index.php");
+    exit;
+}
 ?>
 
 
@@ -13,7 +31,7 @@ include('includes/navbar.php');
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a target="_blank" href="../print-details.php?email=<?= $row['email'] ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
@@ -29,7 +47,7 @@ include('includes/navbar.php');
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Registered Admin</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
 
-               <h4>Total Admin: *</h4>
+               <h4>Total Admin:<?= $row['username'] ?></h4>
 
               </div>
             </div>
