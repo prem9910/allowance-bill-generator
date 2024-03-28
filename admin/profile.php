@@ -106,7 +106,7 @@ if (isset($_POST['new_update'])) {
                         </div>
                         <div class="weight-500 col-md-6">
                             <div class="form-group">
-                                <label>HQ</label>
+                                <label>Head Quarter</label>
                                 <input name="hq" class="form-control form-control-lg" type="text" placeholder="" required="true" autocomplete="off" value="<?php echo $row['hq']; ?>">
                             </div>
                         </div>
@@ -114,7 +114,7 @@ if (isset($_POST['new_update'])) {
                         <div class="weight-500 col-md-6">
                             <div class="form-group">
                                 <label>Password</label>
-                                <input name="password" class="form-control form-control-lg"  type="password" placeholder="" required="true" autocomplete="off" value="<?php echo $row['password']; ?>">
+                                <input name="password" class="form-control form-control-lg" disabled type="password" placeholder="" required="true" autocomplete="off" value="<?php echo $row['password']; ?>">
                             </div>
                         </div>
                         <div class="weight-500 col-md-6">
