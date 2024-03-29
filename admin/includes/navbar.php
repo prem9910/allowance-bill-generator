@@ -1,4 +1,26 @@
+<?php
 
+$email = $_SESSION['username'];
+
+// Retrieve user details from the database using the username
+include('../security.php');
+
+$sql = "SELECT * FROM users WHERE email='$email'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $emp_id = $row['emp_id']; // Assuming you have an 'id' column in your users table
+    $username = $row['username'];
+    // Fetch other user details as needed
+} else {
+    // User not found, handle accordingly
+    header("Location: ../index.php");
+    exit;
+}
+
+
+?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -37,7 +59,7 @@
   <div id="collapseTravel" class="collapse" aria-labelledby="headingTravel" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Travel Details:</h6>
-      <a class="collapse-item" href="buttons.html">Add</a>
+      <a class="collapse-item" href="add_travel.php">Add</a>
       <a class="collapse-item" href="travel_details.php">Manage</a>
     </div>
   </div>
@@ -51,7 +73,7 @@
   <div id="collapseHotel" class="collapse" aria-labelledby="headingHotel" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Hotel Details:</h6>
-      <a class="collapse-item" href="buttons.html">Add</a>
+      <a class="collapse-item" href="add_hotel.php">Add</a>
       <a class="collapse-item" href="hotel_details.php">Manage</a>
     </div>
   </div>
@@ -64,9 +86,9 @@
   </a>
   <div id="collapseFood" class="collapse" aria-labelledby="headingFood" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Hotel Details:</h6>
-      <a class="collapse-item" href="buttons.html">Add</a>
-      <a class="collapse-item" href="cards.html">Manage</a>
+      <h6 class="collapse-header">Food Details:</h6>
+      <a class="collapse-item" href="add_food.php">Add</a>
+      <a class="collapse-item" href="food_details.php">Manage</a>
     </div>
   </div>
 </li>
@@ -249,7 +271,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                   
-               ADMIN                  
+                <?= $row['email'] ?>                  
                 </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
