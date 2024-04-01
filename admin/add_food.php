@@ -24,13 +24,13 @@ include('../security.php');
     <div class="modal-body col-md center-block">
 
         <div class="modal-body">
-            <form action="hotel.php" method="post">
-                <div class="main-form mt-2 mb-3 ">
+            <form action="food_details.php" method="post">
+                <div class="main-form mt-2 mb-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="hotel_name">Hotel Name</label>
-                                <input type="text" id="hotel_name" name="hotel_name" class="form-control" placeholder="Enter Hotel Name" required>
+                                <label for="restaurant">Restaurant Name</label>
+                                <input type="text" id="restaurant" name="restaurant" class="form-control" placeholder="Enter Restaurant Name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -49,21 +49,14 @@ include('../security.php');
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label for="daily_rate">Daily Rate</label>
-                                <input type="text" id="daily_rate" name="daily_rate" class="form-control" placeholder="Enter Daily Rate" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group mb-2">
-                                <label for="total_amount_paid">Total Amount Paid</label>
-                                <input type="text" id="total_amount_paid" name="total_amount_paid" class="form-control" placeholder="Enter Total Amount Paid" required>
+                                <label for="amount">Amount Spent</label>
+                                <input type="text" id="amount" name="amount" class="form-control" placeholder="Enter Amount Spent" required>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary mt-3">Save changes</button>
                 </div>
             </form>

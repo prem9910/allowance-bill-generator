@@ -24,7 +24,7 @@ include('../security.php');
     <div class="modal-body col-md center-block">
 
         <div class="modal-body">
-            <form action="hotel.php" method="post">
+            <form action="hotel_details.php" method="post">
                 <div class="main-form mt-2 mb-3 ">
                     <div class="row">
                         <div class="col-md-6">

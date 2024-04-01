@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
 
 
 ?>
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 

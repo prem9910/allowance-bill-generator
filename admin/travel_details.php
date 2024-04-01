@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($con, $sql)) {
         // Redirect to the user dashboard or show a success message
-        // header("Location: add_travel.php");
+        header("Location: add_travel.php");
         exit();
     } else {
         // Display an error message if the insertion fails
