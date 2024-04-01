@@ -36,12 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="card-body">
     <div class="table-responsive">
+        <?php
+        $query = "SELECT * FROM food where email = '$email'";
+        $query_run = mysqli_query($con, $query);
+        ?>
         <table class="table table-bordered table-hover">
             <thead style="text-align: center;">
                 <tr>
                     <th colspan="2" style="vertical-align: middle;">Period of Expenditure</th>
                     <th rowspan="2" style="vertical-align: middle;">Name of Restaurant</th>
                     <th rowspan="2" style="vertical-align: middle;">Amount Spent (Rs.)</th>
+                    <th rowspan="2" style="vertical-align: middle;">Edit</th>
+                    <th rowspan="2" style="vertical-align: middle;">Delete</th>
                 </tr>
                 <tr>
                     <th>From</th>
@@ -50,25 +56,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </thead>
 
             <tbody>
-                <!-- PHP code to fetch data from the MySQL table and loop through each row -->
+                
                 <?php
-                // SQL query to retrieve data from the table
-                $sql = "SELECT * FROM `Food` WHERE email = '$email'";
-                $result = $con->query($sql);
-
-                // Check if there are any rows in the result
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while ($food = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $food['period_from'] . "</td>";
-                        echo "<td>" . $food['period_to'] . "</td>";
-                        echo "<td>" . $food['restaurant'] . "</td>";
-                        echo "<td>" . $food['amount'] . "</td>";
-                        echo "</tr>";
+                if (mysqli_num_rows($query_run) > 0) {
+                    while ($row = mysqli_fetch_assoc($query_run)) {
+                ?>
+                        <tr>
+                            <td><?php echo $row['period_from']; ?></td>
+                            <td><?php echo $row['period_to']; ?></td>
+                            <td><?php echo $row['restaurant']; ?></td>
+                            <td><?php echo $row['amount']; ?></td>
+                            <td>
+                                <form action="edit_travel.php" method="post">
+                                    <input type="hidden" name="edit_id" value="<?php echo $row['id']; ?>">
+                                    <button type="submit" name="edit_btn" class="btn btn-success">Edit</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="delete_travel.php" method="post">
+                                    <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
+                                    <button type="submit" name="delete_btn" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                <?php
                     }
                 } else {
-                    echo "<tr><td colspan='4'>No data found</td></tr>";
+                    echo "<tr><td colspan='13'>No Records Found</td></tr>";
                 }
                 ?>
             </tbody>

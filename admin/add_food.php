@@ -14,7 +14,7 @@ include('../security.php');
         <div class="card-header py-3">
 
             <div class="col-md-12 mt-2">
-                <h4 class="text-blue h5 mb-20">Add Hotel Details</h4>
+                <h4 class="text-blue h5 mb-20">Add Food Details</h4>
             </div>
         </div>
 
@@ -56,7 +56,6 @@ include('../security.php');
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary mt-3">Save changes</button>
                 </div>
             </form>
