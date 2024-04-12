@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 session_start();
 include('includes/header.php');
 include('includes/navbar.php');
@@ -32,6 +34,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close connection
     mysqli_close($con);
 }
+
+
+// Check if the form is submitted for deletion
+if (isset($_POST['delete_btn'])) {
+    // Get the ID of the record to be deleted
+    $id = $_POST['delete_id'];
+
+    // Direct SQL query to delete the record
+    $sql = "DELETE FROM food WHERE id = $id";
+
+    // Execute the query
+    if (mysqli_query($con, $sql)) {
+        // Redirect to the travel details page or show a success message
+        header("Location: travel_details.php");
+        exit();
+    } else {
+        // Display an error message if the deletion fails
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
+    }
+}
+
+ob_end_flush();
 ?>
 
 <div class="card-body">
@@ -73,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </form>
                             </td>
                             <td>
-                                <form action="delete_travel.php" method="post">
+                                <form action=".php" method="post">
                                     <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
                                     <button type="submit" name="delete_btn" class="btn btn-danger">Delete</button>
                                 </form>
